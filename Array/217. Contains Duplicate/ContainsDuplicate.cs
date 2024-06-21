@@ -16,7 +16,7 @@ public class Solution {
 
     static void Main(string[] args)
     {
-        Console.WriteLine(IsAnagram("anagram", "nagaram"));
-        Console.WriteLine(IsAnagram("Test DSA", "Tesi DAS"));
+        int[] num = [1,2,3,1];
+        Console.WriteLine(ContainsDuplicate(num));
     }
 }
