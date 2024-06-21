@@ -3,54 +3,58 @@ using System;
 class MergeSortExample
 {
     // Merge function to merge two subarrays
-    static void Merge(int[] array, int left, int middle, int right)
-    {
-        int n1 = middle - left + 1;
-        int n2 = right - middle;
-
-        // Temporary arrays
-        int[] leftArray = new int[n1];
-        int[] rightArray = new int[n2];
-
-        // Copy data to temporary arrays
-        Array.Copy(array, left, leftArray, 0, n1);
-        Array.Copy(array, middle + 1, rightArray, 0, n2);
-
-        // Initial indexes of the temporary arrays
-        int i = 0, j = 0;
-        int k = left; // Initial index of merged subarray
-
-        while (i < n1 && j < n2)
+    public static void Merge(int[] array, int left, int mid, int right)
         {
-            if (leftArray[i] <= rightArray[j])
+            int leftArrayLength = mid - left + 1;
+            int rightArrayLength = right - mid;
+            int[] leftArray = new int[leftArrayLength];
+            int[] rightArray = new int[rightArrayLength];
+
+            for (int l = 0; l < leftArrayLength; l++)
             {
-                array[k] = leftArray[i];
-                i++;
+                leftArray[l] = array[left + l];
             }
-            else
+
+            for (int r = 0; r < rightArrayLength; r++)
             {
-                array[k] = rightArray[j];
-                j++;
+                rightArray[r] = array[mid + 1 + r];
             }
-            k++;
-        }
 
-        // Copy remaining elements of leftArray[], if any
-        while (i < n1)
-        {
-            array[k] = leftArray[i];
-            i++;
-            k++;
-        }
+            int li = 0;
+            int ri = 0;
+            int mi = left;
 
-        // Copy remaining elements of rightArray[], if any
-        while (j < n2)
-        {
-            array[k] = rightArray[j];
-            j++;
-            k++;
-        }
-    }
+            while (li < leftArrayLength && ri < rightArrayLength)
+            {
+                if (leftArray[li] <= rightArray[ri])
+                {
+                    array[mi] = leftArray[li];
+                    li++;
+                }
+                else
+                {
+                    array[mi] = rightArray[ri];
+                    ri++;
+                }
+                mi++;
+            }
+
+            while (li < leftArrayLength)
+            {
+                array[mi] = leftArray[li];
+                li++;
+                mi++;
+            }
+
+            while (ri < rightArrayLength)
+            {
+                array[mi] = rightArray[ri];
+                ri++;
+                mi++;
+            }
+
+
+        } 
 
     // MergeSort function
     static void MergeSort(int[] array, int left, int right)
