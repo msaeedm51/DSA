@@ -12,7 +12,10 @@ public class Solution {
        return arr;
     }
 
+ static void Main(string[] args)
+    {
       int[] array = { 12, 11, 13, 5, 6, 7, 100, 45, 80, 200, 132, 111 };
       Console.WriteLine(ReplaceElements(array));
+    }
 }
 
