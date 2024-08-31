@@ -26,10 +26,25 @@ public class Anagram
         return true;
     }
 
+    public static bool IsAnagram(string s, string t) {
+        int[] letters = new int['z' - 'a' + 1];
+        for(int i = 0; i < s.Length; i++)
+        {
+            letters[s[i] - 'a'] += 1; 
+        }
+        for(int j = 0; j < t.Length; j++)
+        {
+            letters[t[j] - 'a'] -= 1;
+        }
+
+        return letters.All(d=> d == 0);
+    
+    }
+
      static void Main(string[] args)
     {
         Console.WriteLine(IsValid("anagram", "nagaram"));
-        Console.WriteLine(IsValid("Test DSA", "Tesi DAS"));
+        Console.WriteLine(IsAnagram("Test DSA", "Tesi DAS"));
     }
 }
 
