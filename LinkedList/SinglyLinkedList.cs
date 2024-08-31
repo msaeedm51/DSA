@@ -55,6 +55,7 @@ public class LinkedList
         if(head.Data == data)
         {
             head = head.Next;
+            return;
         }
 
         Node currentNode = head;
